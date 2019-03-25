@@ -12,7 +12,11 @@ function plotaprox(data, basefun, deg)
         f = chebbase(2*deg-1);
         a = aproxcheb(data, deg, f);
         plot(x,createfun((2*x-maxx-minx)/(maxx-minx),a,f));
+    elseif basefun == "legb"
+        f = legbase(2*deg-1);
+        %a =aproxleg(data, deg, f);
+        %plot(x,createfun(x,a,f));
     else
         return
-    end       
+    end 
 end
