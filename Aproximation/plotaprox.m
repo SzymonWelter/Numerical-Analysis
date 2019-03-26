@@ -7,13 +7,13 @@ function plotaprox(data, basefun, deg)
     x = linspace(minx,maxx);
     if basefun == "poly"
         a = aproxpol(data, deg);        
-        plot(x,createfun(x,a,polybase(2*deg-1)));
+        plot(x,createfun(x,a,polybase(deg+1)));
     elseif basefun == "cheb"
-        f = chebbase(2*deg-1);
+        f = chebbase(deg+1);
         a = aproxcheb(data, deg, f);
         plot(x,createfun((2*x-maxx-minx)/(maxx-minx),a,f));
     elseif basefun == "legb"
-        f = legbase(2*deg-1);
+        f = legbase(deg+1);
         a =aproxleg(data, deg, f);
         plot(x,createfun(x,a,f));
     else
