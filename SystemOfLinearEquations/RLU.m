@@ -29,7 +29,6 @@ function [x, r, err] = RLU(A, b)
         end
         y(i) = (b(i) - res)/L(i,i);
     end
-    x = U\y;
     
     x(n) = y(n)/U(n,n);
     for i = n-1 : -1 : 1
@@ -39,6 +38,6 @@ function [x, r, err] = RLU(A, b)
         end
         x(i) = (y(i) - res)/U(i,i);
     end
-    r = abs(A * x - b);
+    r = abs(A * rot90(x,3) - b);
     err = abs(A-L * U);
 end

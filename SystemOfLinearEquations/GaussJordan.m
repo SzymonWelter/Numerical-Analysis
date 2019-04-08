@@ -1,7 +1,7 @@
 function B = GaussJordan(A)
     [~,n] = size(A);
     B = eye(n);
-    A = [A B]
+    A = [A B];
     
     for i = 1 : n
         A(i,:) = A(i,:)/A(i,i);
