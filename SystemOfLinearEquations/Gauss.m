@@ -1,4 +1,4 @@
-function x = Gauss(A, b)
+function [x, r] = Gauss(A, b)
     [~,n] = size(A);
     x = zeros(1, n);
     [~,imax] = max(abs(A(:,1)));
@@ -10,8 +10,6 @@ function x = Gauss(A, b)
     temp = b(imax);
     b(imax) = b(1);
     b(1) = temp;
-    disp(A);
-    disp(b);
     for i = 1 : n
         for j = i+1 : n
             d = A(j,i)/A(i,i);
@@ -27,4 +25,5 @@ function x = Gauss(A, b)
         end
         x(i) = (b(i) - res)/A(i,i);
     end
+    r = abs(A * rot90(x,3)-b);
 end
